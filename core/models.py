@@ -66,3 +66,28 @@ class Funcionario(Base):
 
   def __str__(self):
     return self.nome
+
+# Modelo para tabela de features
+class Feature(Base):
+  ICONE_CHOICES = (
+    ('lni-cog', 'Engrenagem'),
+    ('lni-stats-up', 'Gráfico'),
+    ('lni-users', 'Usuários'),
+    ('lni-layers', 'Design'),
+    ('lni-mobile', 'Mobile'),
+    ('lni-rocket', 'Foguete'),
+    ('lni-laptop-phone', 'Laptop'),
+    ('lni-leaf', 'Folha'),
+  )
+
+  feature = models.CharField('Feature', max_length=100)
+  descricao = models.TextField('Descrição', max_length=200)
+  icone = models.CharField('Icone', max_length=16, choices=ICONE_CHOICES)
+
+  class Meta:
+    verbose_name = 'Feature'
+    verbose_name_plural = 'Features'
+
+  def __str__(self):
+    return self.feature
+
